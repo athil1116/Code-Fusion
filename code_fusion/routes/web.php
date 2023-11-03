@@ -28,3 +28,13 @@ Route::middleware([
 route::get('/redirect',[user::class,'redirect']);
 
 route::get('/',[user::class,'index']);
+
+route::get('/view_category',[admin::class,'view_category']);
+
+route::post('/add_category',[admin::class,'add_category']);
+
+route::get('/delete_category/{id}',[admin::class,'delete_category']);
+
+route::get('/edit_category/{id}',[admin::class,'edit_category']);
+
+route::post('/category_edit/{id}',[admin::class,'category_edit']);
