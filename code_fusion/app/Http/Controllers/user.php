@@ -49,10 +49,11 @@ class user extends Controller
     public function course_meterial($id)
     {
         
-            $courses =  DB::table('materials')
-            ->where('cid', $id)
-            ->get();
-            return view('user.course_page',compact('courses'));
+        $courses = DB::table('materials')
+        ->where('cid', $id)
+        ->paginate(3);  // Paginate with 10 courses per page
+
+            return view('user.course_meterial',compact('courses'));
       
     }
 
