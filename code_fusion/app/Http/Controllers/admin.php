@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\course;
+use App\Models\material;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -125,8 +126,39 @@ class admin extends Controller
             }
     }
 
+    public function course_data($data)
+    {
+    
+        $notes=  DB::table('materials')
+        ->where('cid', $data)
+        ->get();
+        return view('admin.course_data',compact('data','notes'));
+        
+    }
 
-
+    public function store(Request $request, $data)
+    {
+       
+    
+        $course = new material();
+    
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            $imagename = uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads'), $imagename);
+            $course->image = $imagename;
+        }
+    
+        $course->main_title = $request->input('main_title');
+        $course->sub_title = $request->input('sub_title');
+        $course->description = $request->input('description');
+        $course->cid = $data; // Assuming $data contains the course ID
+    
+        $course->save();
+    
+        return redirect()->back()->with('message', 'Course Added Successfully');
+    }
+    
 
     
 }

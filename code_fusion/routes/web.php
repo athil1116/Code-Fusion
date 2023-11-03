@@ -47,6 +47,13 @@ route::get('/course_view',[admin::class,'course_view']);
 
 route::get('/course_delete/{id}',[admin::class,'course_delete']);
 
+route::get('/course_data/{id}',[admin::class,'course_data']);
+
+route::post('/store/{data}',[admin::class,'store']);
+
+// -------------------------------------------USER--------------------------------------------------
+
 route::get('/course_page/{course_name}',[user::class,'course_page']);
 
 route::get('/course_meterial/{course_name}',[user::class,'course_meterial']);
+

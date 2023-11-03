@@ -49,7 +49,7 @@ class user extends Controller
     public function course_meterial($id)
     {
         
-            $courses =  DB::table('meterials')
+            $courses =  DB::table('materials')
             ->where('cid', $id)
             ->get();
             return view('user.course_page',compact('courses'));

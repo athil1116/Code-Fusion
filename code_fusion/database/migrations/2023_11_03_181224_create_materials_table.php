@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('meterials', function (Blueprint $table) {
+        Schema::create('materials', function (Blueprint $table) {
             $table->id();
             $table->string('cid')->nullable();
-            $table->string('title')->nullable();
+            $table->string('main_title')->nullable();
+            $table->string('sub_title')->nullable();
             $table->string('description')->nullable();
-            $table->string('video')->nullable();
-            $table->string('notes')->nullable();
-            
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meterials');
+        Schema::dropIfExists('materials');
     }
 };
