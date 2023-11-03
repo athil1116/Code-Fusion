@@ -31,7 +31,7 @@
                     <li><a href="{{url('view_category')}}"><i class="ti-layout-grid2-alt"></i>View Category</a></li>
 
                     <li><a href="{{url('add_course')}}"><i class="ti-layout-grid2-alt"></i>Add Courses</a></li>
-                    <li><a href="{{url('doctor_view')}}"><i class="ti-user"></i>Show Doctors</a></li>
+                    <li><a href="{{url('course_view')}}"><i class="ti-user"></i>Courses & Enrollments</a></li>
                     <li><a href="{{url('patient_view')}}"><i class="ti-user"></i>Show Patients</a></li>
                     <li><a href="{{url('contact_view')}}"><i class="ti-email"></i> Contact View</a></li>
                     <!-- <li><a href="{{url('admin_order_view')}}"><i class="ti-user"></i> Orders</a></li> -->

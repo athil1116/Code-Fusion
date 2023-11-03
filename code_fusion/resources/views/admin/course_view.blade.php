@@ -68,42 +68,25 @@
                                                 <tr>
                                                     <th></th>
                                                     <th>Name</th>
-                                                    <th>Gender</th>
-                                                    <th>D.O.B</th>
-                                                    <th>Address</th>
-                                                    <th>Pin</th>
-                                                    <th>Contact</th>
-                                                    <th>Email</th>
-                                                    <th>Certificate</th>
-                                                    <th>Id</th>
+                                                    <th>Details</th>
+                                                    <th>Category</th>
+                                                    <th>Enrolments</th>
+                                                    
                                                     <th>Delete</th>
-                                                    <th></th>
-                                                    <th></th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($data as $doctors)
+                                                @foreach($category as $doctors)
                                                 <tr>
                                                     <td><img src="/uploads/{{$doctors->image}}" alt="Product image" heigh="150px" width="150px" class="product-image"></td>
                                                     <td>{{$doctors->name}}</td>
-                                                    <td>{{$doctors->gender}}</td>
-                                                    <td>{{$doctors->dob}}</td>
-                                                    <td>{{$doctors->address}}</td>
-                                                    <td>{{$doctors->pin}}</td>
-                                                    <td>{{$doctors->phone}}</td>
-                                                    <td>{{$doctors->email}}</td>
-                                                    <td><a href="/uploads/{{$doctors->image1}}" class="btn btn-info">Download</td>
-                                                    <td><a href="/uploads/{{$doctors->image2}}" class="btn btn-info">Download</td>
-                                                    <td><a href="{{url('doctor_delete',['lid' => $doctors->lid,'id' => $doctors->id])}}" onclick="return confirmDelete()" class="btn btn-danger">Delete</a></td>
-                                                    @if ($doctors->status == 1)
-                                                        <td>Approved</td>
-                                                        <td><a href="{{url('doctor_reject',['lid' => $doctors->lid])}}" onclick="return reject()" class="btn btn-outline-danger">Reject</a></td>                               
-                                                        
-                                                    @elseif($doctors->status == 0)   
-                                                    <td><a href="{{url('doctor_approve',['lid' => $doctors->lid])}}" onclick="return approve()" class="btn btn-success">Approve</a></td>                          
-                                                        
-                                                        <td>Rejected</td>
-                                                    @endif
+                                                    <td>{{$doctors->details}}</td>
+                                                    <td>{{$doctors->category}}</td>
+                                                    <td>(125) <a href="" class="btn btn-success">Enrollments</a></td>
+                                                    
+                                                    <td><a href="{{url('course_delete',['id' => $doctors->id])}}" onclick="return confirmDelete()" class="btn btn-danger">Delete</a></td>
+                                                 
                                                    
                                                 </tr>
                                                 @endforeach

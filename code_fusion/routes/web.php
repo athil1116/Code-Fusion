@@ -38,3 +38,11 @@ route::get('/delete_category/{id}',[admin::class,'delete_category']);
 route::get('/edit_category/{id}',[admin::class,'edit_category']);
 
 route::post('/category_edit/{id}',[admin::class,'category_edit']);
+
+route::get('/add_course',[admin::class,'add_course']);
+
+route::post('/upload_course',[admin::class,'upload_course']);
+
+route::get('/course_view',[admin::class,'course_view']);
+
+route::get('/course_delete/{id}',[admin::class,'course_delete']);

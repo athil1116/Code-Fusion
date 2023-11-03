@@ -1,7 +1,4 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
--->
+
 <!doctype html>
 <html lang="en">
 
@@ -101,4 +98,3 @@ Author URL: http://w3layouts.com
       </div>
     </section>
   </div>
-  <!-- about page about section -->

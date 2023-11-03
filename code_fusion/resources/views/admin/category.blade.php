@@ -90,7 +90,7 @@
 
 
                                 <div class="form-validation">
-                                    <form class="form-valide" action="{{url('add_category')}}" method="POST">
+                                    <form class="form-valide" action="{{url('add_category')}}" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="hidden" value='h'>
                                         @csrf
                                         <div class="form-group row">
@@ -101,7 +101,14 @@
                                             <label class="col-lg-4 col-form-label" for="val-username">Add Description <span class="text-danger">*</span></label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="t1" name="desc" placeholder=" Description..">
-                                            </div><br>
+                                            </div>
+                                            <label class="col-lg-4 col-form-label" for="val-username">Add Image <span class="text-danger">*</span></label>
+
+                                            <div class="col-lg-6">
+                                                <input type="file" class="form-control" name="file" placeholder=" Description..">
+                                            </div>
+
+                                            <br>
                                             <div class="col-lg-2">
                                                 <button type="submit" class="btn btn-primary" onclick="return ver()">Submit</button>
                                             </div>
@@ -121,27 +128,9 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
-                    <!-- <div class="col-lg-8 p-r-0 title-margin-right">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <h1>Hello, <span>Addes Categories</span></h1>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- /# column -->
-                    <!-- <div class="col-lg-4 p-l-0 title-margin-left">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Table-Export</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- /# column -->
+                   
                 </div>
-                <!-- /# row -->
+                
                 <section id="main-content">
                     <div class="row">
                         <div class="col-lg-12">
@@ -168,7 +157,7 @@
                                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
-                                                    
+                                                    <th></th>
                                                     <th>Category Name</th>
                                                     <th>Created Date</th>
                                                     <th>Updated Date</th>
@@ -181,6 +170,7 @@
                                             <tbody>
                                                 @foreach($datas as $data)
                                                 <tr>
+                                                <td><img src="/uploads/{{$data->image}}" alt="Product image" heigh="150px" width="150px" ></td>
                                                 <td>{{$data->category_name}}</td>
                                                 <td>{{$data->created_at}}</td>
                                                 <td>{{$data->updated_at}}</td>
