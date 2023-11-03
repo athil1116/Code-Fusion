@@ -25,7 +25,7 @@ class admin extends Controller
     }
 
     public function add_category(Request $request)
-    {
+    { 
         
         $data=new category;
         if ($request->hasFile('file')) {

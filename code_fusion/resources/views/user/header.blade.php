@@ -12,7 +12,7 @@
     rel="stylesheet">
   <!--//google-fonts-->
   <!-- Template CSS -->
-  <link rel="stylesheet" href="user/assets/css/style-starter.css">
+  <link rel="stylesheet" href="{{asset('user/assets/css/style-starter.css')}}">
 
 </head>
 

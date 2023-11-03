@@ -99,8 +99,8 @@
     <!-- /move top -->
   </section>
   <!-- //copyright -->
-  <script src="user/assets/js/jquery-3.3.1.min.js"></script> <!-- Common jquery plugin -->
-  <script src="user/assets/js/theme-change.js"></script><!-- theme switch js (light and dark)-->
+  <script src="{{asset('user/assets/js/jquery-3.3.1.min.js')}}"></script> <!-- Common jquery plugin -->
+  <script src="{{asset('user/assets/js/theme-change.js')}}"></script><!-- theme switch js (light and dark)-->
   <!--/MENU-JS-->
   <script>
     $(window).on("scroll", function () {
@@ -141,7 +141,7 @@
   <!-- //disable body scroll which navbar is in active -->
 
   <!--bootstrap-->
-  <script src="user/assets/js/bootstrap.min.js"></script>
+  <script src="{{asset('user/assets/js/bootstrap.min.js')}}"></script>
   <!-- //bootstrap-->
 
 </body>
