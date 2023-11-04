@@ -185,6 +185,9 @@
             <label>
                 <input type="radio" name="questions[{{$key}}]" value="d"><span class="checkmark"></span> d) {{$data->ans4}}
             </label>
+            
+            <input type="hidden" name="questions[{{$key}}]" value="e">
+
         </div>
         <br><br>
         @endforeach
