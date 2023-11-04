@@ -164,8 +164,9 @@
     <form action="{{url('submmit_quiz',['id' => $id])}}" method="POST">
     @csrf
     <div class="quiz-container">
-        <!-- Countdown timer -->
-        <!-- ... (your timer code) -->
+    <div class="timer-container">
+        <div class="timer" id="countdown">25:00</div>
+    </div>
 
         @foreach($quiz as $key => $data)
         <div class="question">
@@ -188,7 +189,7 @@
         <br><br>
         @endforeach
 
-        <button type="submit" class="submit-button">Submit</button>
+        <button type="submit" class="submit-button" id="submitBtn">Submit</button>
     </div>
 </form>
 
@@ -196,7 +197,7 @@
 </body>
 <script>
     // Set the countdown time to 25 minutes (in seconds)
-    let countdownTime = 25 * 60;
+    let countdownTime = 1 * 60;
     // Function to display and update the countdown timer
     function updateCountdown() {
         const countdownElement = document.getElementById('countdown');

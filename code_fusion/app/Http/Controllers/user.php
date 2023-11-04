@@ -113,13 +113,12 @@ class user extends Controller
 {
     $user_id = Auth::user()->id;
 
-    foreach ($request->input('questions') as $question_id => $selected_answer)
-    {
-        
+    foreach ($request->input('questions') as $question_id => $selected_answer) {
         $quizAnswer = new answer;
         $quizAnswer->lid = $user_id;
         $quizAnswer->qid = $id;
-        $quizAnswer->answer = $request->input('questions');
+       // Assuming you have a question_id column
+        $quizAnswer->answer = $selected_answer;  // Store the selected answer for this question
         $quizAnswer->save();
     }
 

@@ -108,10 +108,10 @@
                     <label for="correct_option">Correct Option:</label>
                     <select id="correct_option" name="answer" required>
                         <option >select</option>
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
-                        <option value="option4">Option 4</option>
+                        <option value="option1">a</option>
+                        <option value="option2">b</option>
+                        <option value="option3">c</option>
+                        <option value="option4">d</option>
                     </select>
 
                     
