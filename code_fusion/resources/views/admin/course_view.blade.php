@@ -84,7 +84,7 @@
                                                     <td>{{$doctors->name}}</td>
                                                     <td>{{$doctors->details}}</td>
                                                     <td>{{$doctors->category}}</td>
-                                                    <td><a href="{{url('course_data',['id' => $doctors->id])}}" class="btn btn-info">Delete</a></td>
+                                                    <td><a href="{{url('course_data',['id' => $doctors->id])}}" class="btn btn-info">View</a></td>
                                                     <td>(125) <a href="" class="btn btn-success">Enrollments</a></td>
                                                     
                                                     <td><a href="{{url('course_delete',['id' => $doctors->id])}}" onclick="return confirmDelete()" class="btn btn-danger">Delete</a></td>

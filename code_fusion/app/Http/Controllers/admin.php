@@ -152,6 +152,7 @@ class admin extends Controller
         $course->main_title = $request->input('main_title');
         $course->sub_title = $request->input('sub_title');
         $course->description = $request->input('description');
+        $course->syntax = $request->input('syntax');
         $course->cid = $data; // Assuming $data contains the course ID
     
         $course->save();

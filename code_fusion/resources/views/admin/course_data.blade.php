@@ -79,13 +79,20 @@
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="sub_title" name="sub_title" placeholder="Sub Title..">
                                             </div>
+
                                             <label class="col-lg-4 col-form-label" for="course_details">Course Details <span class="text-danger">*</span></label>
                                             <div class="col-lg-6">
                                                 <textarea class="form-control" id="course_details" name="description" rows="4" cols="50" placeholder="Course Details.."></textarea>
                                             </div>
+
+                                            <label class="col-lg-4 col-form-label" for="course_details">Syntax <span class="text-danger">*</span></label>
+                                            <div class="col-lg-6">
+                                                <textarea class="form-control" id="course_details" name="syntax" rows="4" cols="50" placeholder="Syntax.."></textarea>
+                                            </div>
+
                                             <label class="col-lg-4 col-form-label" for="media">Upload Media (Image or Video) <span class="text-danger">*</span></label>
                                             <div class="col-lg-6">
-                                                <input type="file" class="form-control" name="media" placeholder="Upload Media.." accept="image/*,video/*">
+                                                <input type="file" class="form-control" name="file" placeholder="Upload Media.." accept="image/*,video/*">
                                             </div>
                                             <br>
                                             <div class="col-lg-6">

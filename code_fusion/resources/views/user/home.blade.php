@@ -12,36 +12,26 @@
 
 @foreach($category as $data)
         
-        <div class="col-lg-4 col-md-6 item">
 
-        <a href="{{url('course_page',['id' => $data->category_name])}}">
-          <div class="card">
-            <div class="card-header p-0 position-relative">
-
-              <a href="{{url('course_page',['id' => $data->category_name])}}">
-                <img class="card-img-bottom d-block " src="/uploads/{{$data->image}}" heigh="100px" width="100px"  alt="Card image cap">
-              </a>
-            </div>
-            <div class="card-body blog-details">
-              
-              <a href="#" class="blog-desc mt-2">{{$data->category_name}}
-              </a>
-              <div class="course-meta mt-1">
-                <div class="meta-item course-lesson">
-                  
-                </div>
-                <div class="meta-item course-students">
-                  <span class="fa fa-user-o"></span>
-                  <span class="meta-value"> 40 Students </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          </a>
-
+<div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+    <div class="card mb-4">
+        <a href="{{ url('course_meterial', ['id' => $data->id]) }}">
+            <img class="card-img-top" src="/uploads/{{$data->image}}" alt="Card image cap" style="height: 200px; width: 200px;">
+        </a>
+        <div class="card-body">
+            <h5 class="card-title">{{$data->category_name}}</h5>
+            <p class="card-text">{{ $data->details }}</p>
+          
+            <p>
+            <span class="meta-value"> 40 Students </span>
+            </p>
         </div>
-    
+    </div>
+</div>
 @endforeach
+
+
+
 
         
 
