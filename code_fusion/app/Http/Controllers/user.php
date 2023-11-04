@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\course;
+use App\Models\enrolment;
 use App\Models\meterials;
 
 class user extends Controller
@@ -55,6 +56,33 @@ class user extends Controller
 
             return view('user.course_meterial',compact('courses'));
       
+    }
+
+    public function course_intro($id)
+    {
+        $lid = Auth::user()->id;
+        $courses = DB::table('categories')->join('courses', 'categories.category_name', '=', 'courses.category')
+       
+        ->paginate(3);  // Paginate with 10 courses per page
+
+        $chk=DB::table('enrolments')->where('cid','=',$id)->where('lid','=',$lid)->first();
+
+            return view('user.course_intro',compact('courses','chk'));
+      
+    }
+
+    public function course_enrollment_free($id,$name)
+    {
+   
+        $lid = Auth::user()->id;
+        $booking = new enrolment;
+        $booking->cid= $id;
+        $booking->cname= $name;
+        $booking->lid = $lid;
+        $booking->save();
+
+        session()->flash('message', 'Enrolled successfully');
+        return redirect()->back();
     }
 
 

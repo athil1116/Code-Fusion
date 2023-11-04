@@ -15,7 +15,7 @@
 
 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
     <div class="card mb-4">
-        <a href="{{ url('course_meterial', ['id' => $data->id]) }}">
+        <a href="{{url('course_page',['id' => $data->category_name])}}">
             <img class="card-img-top" src="/uploads/{{$data->image}}" alt="Card image cap" style="height: 200px; width: 200px;">
         </a>
         <div class="card-body">

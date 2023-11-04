@@ -11,12 +11,12 @@
 @foreach($courses as $data)
 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
     <div class="card mb-4">
-        <a href="{{ url('course_meterial', ['id' => $data->id]) }}">
+        <a href="{{ url('course_intro', ['id' => $data->id]) }}">
             <img class="card-img-top" src="/uploads/{{ $data->image }}" alt="Card image cap" style="height: 200px; width: 100%;">
         </a>
         <div class="card-body">
             <h5 class="card-title">{{ $data->name }}</h5>
-            <p class="card-text">{{ $data->details }}</p>
+            <p class="card-text">{{ Illuminate\Support\Str::limit($data->details, $limit = 75, $end = '...') }}</p>
             
             <p>
                 <i class="fa fa-money" color="orange"></i> <span class="text-orange">{{ $data->fees }}</span>
