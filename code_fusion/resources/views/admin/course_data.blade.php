@@ -54,9 +54,16 @@
                 <tr>
                     <td>{{ $note->main_title }}</td>
                     <td>{{ $note->sub_title }}</td>
+
                     <td>
-                        <a href="" class="btn btn-info">View</a>
+                        @if ($note->type === null)
+                            <a href="{{url('view_material', ['id' => $note->id]) }}" class="btn btn-info">View</a>
+                        @else
+                        <a href="{{url('add_questions',['data' => $data,'id' => $note->id]) }}" class="btn btn-danger">Add Questions</a>
+
+                        @endif
                     </td>
+
                 </tr>
             @endforeach
         </tbody>
@@ -66,6 +73,17 @@
 
 
                             <div class="col-md-6">
+
+                            <h1>Select an Option</h1>
+
+                            <label for="pageSelector" >Select a page:</label>
+                            <select id="pageSelector" class="form-control">
+                                <option value="page1">Add course Material</option>
+                                <option value="page2">Add Quiz Slot</option>
+                            </select>
+
+<div id="page1" style="display: none;">
+                            
                                 <h1>Upload Notes</h1>
                                 <div class="form-validation">
                                 <form class="form-valide" action="{{ url('store', ['data' => $data]) }}" method="POST" enctype="multipart/form-data">
@@ -102,9 +120,22 @@
                                     </form>
                                 </div>
                             </div>
+<br>
+<br>
+<div id="page2" style="display: none;">
+    
+    <a href="{{ url('add_quiz_slot',['data' => $data]) }}" class="btn btn-success">Add Quiz Slot</a>
+</div>
+
+
+</div>
+
+
+                               
+                            
 
                             
-                        </div>
+</div>
                     </div>
                     <!-- /# column -->
                 </div>
@@ -122,6 +153,29 @@
     </div>
 
     <!-- @include('admin.script') -->
+
+    <script>
+        // Function to show the selected page
+        function showPage() {
+            var select = document.getElementById("pageSelector");
+            var page1 = document.getElementById("page1");
+            var page2 = document.getElementById("page2");
+
+            if (select.value === "page1") {
+                page1.style.display = "block";
+                page2.style.display = "none";
+            } else if (select.value === "page2") {
+                page1.style.display = "none";
+                page2.style.display = "block";
+            }
+        }
+
+        // Add an event listener to the select element
+        document.getElementById("pageSelector").addEventListener("change", showPage);
+
+        // Initially show the default selected page
+        showPage();
+    </script>
 
     <script src="admin/assets/js/lib/jquery.min.js"></script>
     <script src="admin/assets/js/lib/jquery.nanoscroller.min.js"></script>

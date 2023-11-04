@@ -82,13 +82,13 @@
                                                 <tr>
                                                     <td><img src="/uploads/{{$doctors->image}}" alt="Product image" heigh="150px" width="150px" class="product-image"></td>
                                                     <td>{{$doctors->name}}</td>
-                                                    <td>{{$doctors->details}}</td>
+                                                    <td>{{ Illuminate\Support\Str::limit($doctors->details, $limit = 75, $end = '...') }}</td>
                                                     <td>{{$doctors->category}}</td>
                                                     <td><a href="{{url('course_data',['id' => $doctors->id])}}" class="btn btn-info">View</a></td>
                                                     <td>(125) <a href="" class="btn btn-success">Enrollments</a></td>
                                                     
                                                     <td><a href="{{url('course_delete',['id' => $doctors->id])}}" onclick="return confirmDelete()" class="btn btn-danger">Delete</a></td>
-                                                 
+                                                    
                                                    
                                                 </tr>
                                                 @endforeach

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\course;
+use App\Models\quiz;
+use App\Models\answer;
 use App\Models\enrolment;
 use App\Models\meterials;
 
@@ -52,11 +54,23 @@ class user extends Controller
         
         $courses = DB::table('materials')
         ->where('cid', $id)
-        ->paginate(3);  // Paginate with 10 courses per page
+        ->paginate(3);  
 
-            return view('user.course_meterial',compact('courses'));
+        foreach ($courses as $course) {
+            if (!is_null($course->type)) 
+            { 
+                $quiz = DB::table('quizzes')->
+                join('materials', 'quizzes.cid', '=', 'materials.cid')->
+                where('qid', $course->id)->first();
+               
+            }
+        }
+
+            return view('user.course_meterial',compact('courses','quiz'));
       
     }
+
+    
 
     public function course_intro($id)
     {
@@ -84,6 +98,38 @@ class user extends Controller
         session()->flash('message', 'Enrolled successfully');
         return redirect()->back();
     }
+
+    public function quiz($id)
+    {
+        
+        $quiz = DB::table('quizzes')
+        ->where('qid', $id)
+        ->get();  
+            return view('user.quiz',compact('quiz','id'));
+      
+    }
+
+    public function submmit_quiz(Request $request, $id)
+{
+    $user_id = Auth::user()->id;
+
+    foreach ($request->input('questions') as $question_id => $selected_answer)
+    {
+        
+        $quizAnswer = new answer;
+        $quizAnswer->lid = $user_id;
+        $quizAnswer->qid = $id;
+        $quizAnswer->answer = $request->input('questions');
+        $quizAnswer->save();
+    }
+
+    // Optionally, you can calculate the score or perform any other actions
+
+    // Redirect or return a response as needed
+    session()->flash('message', 'Quiz submitted successfully');
+    return redirect()->back();
+}
+
 
 
     

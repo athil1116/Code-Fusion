@@ -51,6 +51,14 @@ route::get('/course_data/{id}',[admin::class,'course_data']);
 
 route::post('/store/{data}',[admin::class,'store']);
 
+route::get('/add_quiz_slot/{data}',[admin::class,'add_quiz_slot']);
+
+route::get('/add_questions/{data}/{id}',[admin::class,'add_questions']);
+
+route::post('/upload_quiz/{data}/{id}',[admin::class,'upload_quiz']);
+
+
+
 // -------------------------------------------USER--------------------------------------------------
 
 route::get('/course_page/{course_name}',[user::class,'course_page']);
@@ -60,4 +68,9 @@ route::get('/course_meterial/{course_name}',[user::class,'course_meterial']);
 route::get('/course_intro/{course_name}',[user::class,'course_intro']);
 
 route::get('/course_enrollment_free/{id}/{name}',[user::class,'course_enrollment_free']);
+
+route::get('/quiz/{id}',[user::class,'quiz']);
+
+route::post('/submmit_quiz/{id}',[user::class,'submmit_quiz']);
+
 

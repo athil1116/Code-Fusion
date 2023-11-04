@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\course;
 use App\Models\material;
+use App\Models\quiz;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -158,6 +159,61 @@ class admin extends Controller
         $course->save();
     
         return redirect()->back()->with('message', 'Course Added Successfully');
+    }
+
+    
+
+    public function add_quiz_slot($data)
+    {
+       
+    
+        $course = new material();
+    
+
+        $course->type = 'quiz';
+    
+        $course->cid = $data;
+    
+        $course->save();
+    
+        return redirect()->back()->with('message', 'Course Added Successfully');
+    }
+
+    
+
+    public function add_questions($data,$id)
+    {
+       
+        return view('admin.add_questions',compact('data','id'));
+    }
+
+    
+
+    public function upload_quiz(Request $request, $data,$id)
+    {
+       
+    
+        $course = new quiz();
+    
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            $imagename = uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads'), $imagename);
+            $course->image = $imagename;
+        }
+    
+        $course->question = $request->input('question');
+        $course->ans1 = $request->input('ans1');
+        $course->ans2 = $request->input('ans2');
+        $course->ans3 = $request->input('ans3');
+        $course->ans4 = $request->input('ans4');
+        $course->answer = $request->input('answer');
+        $course->qid = $id;
+        $course->cid = $data; 
+    
+        $course->save();
+    
+        return redirect()->back()->with('message', 'Quiz Added Successfully');
     }
     
 

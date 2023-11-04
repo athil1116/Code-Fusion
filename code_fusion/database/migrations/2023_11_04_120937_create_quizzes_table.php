@@ -13,15 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('materials', function (Blueprint $table) {
+        Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
+            $table->string('qid')->nullable();
             $table->string('cid')->nullable();
-            $table->string('main_title')->nullable();
-            $table->string('sub_title')->nullable();
-            $table->string('description')->nullable();
-            $table->string('syntax')->nullable();
             $table->string('image')->nullable();
-            $table->string('type')->nullable();
+            $table->string('question')->nullable();
+            $table->string('ans1')->nullable();
+            $table->string('ans2')->nullable();
+            $table->string('ans3')->nullable();
+            $table->string('ans4')->nullable();
+            $table->string('answer')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materials');
+        Schema::dropIfExists('quizzes');
     }
 };

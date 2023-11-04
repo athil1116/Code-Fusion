@@ -280,11 +280,7 @@ button::-moz-focus-inner,
   border-style: none;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
-  box-sizing: border-box;
-  padding: 0;
-}
+
 
 input[type="date"],
 input[type="time"],
@@ -3439,14 +3435,6 @@ tbody.collapse.show {
   margin-bottom: 0;
 }
 
-.btn-group-toggle > .btn input[type="radio"],
-.btn-group-toggle > .btn input[type="checkbox"],
-.btn-group-toggle > .btn-group > .btn input[type="radio"],
-.btn-group-toggle > .btn-group > .btn input[type="checkbox"] {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  pointer-events: none;
-}
 
 .input-group {
   position: relative;
@@ -3575,10 +3563,7 @@ tbody.collapse.show {
   border-radius: 0.25rem;
 }
 
-.input-group-text input[type="radio"],
-.input-group-text input[type="checkbox"] {
-  margin-top: 0;
-}
+
 
 .input-group > .input-group-prepend > .btn,
 .input-group > .input-group-prepend > .input-group-text,
@@ -3703,21 +3688,6 @@ tbody.collapse.show {
   background-color: rgba(0, 123, 255, 0.5);
 }
 
-.custom-radio .custom-control-label::before {
-  border-radius: 50%;
-}
-
-.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #007bff;
-}
-
-.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E");
-}
-
-.custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
-  background-color: rgba(0, 123, 255, 0.5);
-}
 
 .custom-select {
   display: inline-block;
