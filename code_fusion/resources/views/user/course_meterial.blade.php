@@ -75,7 +75,7 @@
             @endif
             <br>
             @if (!empty($data->description))
-                <p>{{ $data->description }}</p>
+                <p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{{ $data->description }}</p>
             @endif
             <br>
             @if (!empty($data->syntax))

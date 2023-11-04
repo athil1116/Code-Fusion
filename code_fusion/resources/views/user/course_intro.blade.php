@@ -37,18 +37,9 @@
     color: #ff6600;
 }
 
-.course-card a.btn {
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
 
-.course-card a.btn:hover {
-    background-color: #0056b3;
-}
+
+
 
 .pagination.pagination-lg {
     margin-top: 20px;
@@ -84,7 +75,7 @@
                         </p2>
                         <br>
                             @if ($chk)
-                            <a href="" class="btn btn-warning">Enrolled Continue Learning</a>
+                            <a href="{{ url('course_meterial', ['id' => $data->id]) }}" class="btn btn-warning">Enrolled Continue Learning</a>
                             @else
                             <a href="{{ url('course_enrollment_free', ['id' => $data->id, 'name' => $data->name]) }}" class="btn btn-success">Enroll Now</a>
                                
