@@ -171,12 +171,73 @@
     
     <div>
 
+    @foreach ($answer as $data)
       
-   <h3> Your  Score    {{$counts}}/25</h3>
+    <div class="question">
+            <h4>{{ $loop->iteration }}: {{ $data->question }}</h4>
+    </div>
+    <div class="options">
+    @if($data->answer == 'a')
+    <label>
+        <input type="radio" value="a" checked><span class="checkmark"></span> a) {{ $data->ans1 }}
+    </label>
+    <label>
+        <input type="radio" value="b"><span class="checkmark"></span> b) {{ $data->ans2 }}
+    </label>
+    <label>
+        <input type="radio" value="c"><span class="checkmark"></span> c) {{ $data->ans3 }}
+    </label>
+    <label>
+        <input type="radio" value="d"><span class="checkmark"></span> d) {{ $data->ans4 }}
+    </label>
+@elseif($data->answer == 'b')
+    <label>
+        <input type="radio" value="a"><span class="checkmark"></span> a) {{ $data->ans1 }}
+    </label>
+    <label>
+        <input type="radio" value="b" checked><span class="checkmark"></span> b) {{ $data->ans2 }}
+    </label>
+    <label>
+        <input type="radio" value="c"><span class="checkmark"></span> c) {{ $data->ans3 }}
+    </label>
+    <label>
+        <input type="radio" value="d"><span class="checkmark"></span> d) {{ $data->ans4 }}
+    </label>
+@elseif($data->answer == 'c')
+    <label>
+        <input type="radio" value="a"><span class="checkmark"></span> a) {{ $data->ans1 }}
+    </label>
+    <label>
+        <input type="radio" value="b"><span class "checkmark"></span> b) {{ $data->ans2 }}
+    </label>
+    <label>
+        <input type="radio" value="c" checked><span class="checkmark"></span> c) {{ $data->ans3 }}
+    </label>
+    <label>
+        <input type="radio" value="d"><span class="checkmark"></span> d) {{ $data->ans4 }}
+    </label>
+@elseif($data->answer == 'd')
+    <label>
+        <input type="radio" value="a"><span class="checkmark"></span> a) {{ $data->ans1 }}
+    </label>
+    <label>
+        <input type="radio" value="b"><span class="checkmark"></span> b) {{ $data->ans2 }}
+    </label>
+    <label>
+        <input type="radio" value="c"><span class="checkmark"></span> c) {{ $data->ans3 }}
+    </label>
+    <label>
+        <input type="radio" value="d" checked><span class="checkmark"></span> d) {{ $data->ans4 }}
+    </label>
+@endif
 
+        
+    </div>
+        <p>Correct Answer: {{ $data->answer }}</p>
+    @endforeach
     <br>
     <br>
-    <a href="{{ url('view_answer', ['id' => $id]) }}" class="btn btn-warning"> View Answers</a>
+    <a href="{{ url('course_meterial', ['id' => $id]) }}" class="btn btn-warning"> Continue Learning</a>
     </div>
 
 

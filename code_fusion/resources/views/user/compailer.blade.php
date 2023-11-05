@@ -172,11 +172,16 @@
     <div>
 
       
-   <h3> Your  Score    {{$counts}}/25</h3>
+<iframe 
+ frameBorder="0" 
+ height="450px"
+ src="https://onecompiler.com/embed/python?codeChangeEvent=true"
+ width="100%"
+></iframe>
 
     <br>
     <br>
-    <a href="{{ url('view_answer', ['id' => $id]) }}" class="btn btn-warning"> View Answers</a>
+  
     </div>
 
 

@@ -102,7 +102,7 @@
             
             @if (!empty($data->syntax))
             <br>
-            <p><a href="" class="btn btn-success">Try it Yourself</a></p>
+            <p><a href="{{ url('compailer') }}" class="btn btn-success">Try it Yourself</a></p>
             @endif
 
             

@@ -106,6 +106,7 @@ class user extends Controller
         $booking = new enrolment;
         $booking->cid= $id;
         $booking->cname= $name;
+        $booking->level= 0;
         $booking->lid = $lid;
         $booking->save();
 
@@ -156,7 +157,9 @@ class user extends Controller
         ->where('answers.lid', $user_id)
         ->where('answers.qid', $id)
         ->where('answers.result', 1) 
+        ->orderBy('answers.id', 'asc')
         ->get();
+    
         
     
 
@@ -183,8 +186,27 @@ class user extends Controller
 
 
 
-return view('user.score', compact('score', 'counts','cid'));
+return view('user.score', compact('score', 'counts','cid','id'));
     }
+
+    public function compailer()
+    {
+        
+       
+            return view('user.compailer');
+      
+    }
+
+    public function view_answer($id)
+    {
+        $answer = DB::table('quizzes')
+        ->where('qid',$id )
+        ->get();
+
+        return view('user.answer',compact('answer','id'));
+      
+    }
+
 
 
 
