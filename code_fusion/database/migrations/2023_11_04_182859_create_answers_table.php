@@ -18,7 +18,7 @@ return new class extends Migration
            
             $table->string('qid')->nullable();
             $table->string('lid')->nullable();
-            $table->string('answer')->nullable();
+            $table->string('ianswer')->nullable();
             $table->string('result')->nullable();
             $table->timestamps();
         });

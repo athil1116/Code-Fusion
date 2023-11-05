@@ -141,12 +141,12 @@
 
         /* Style for the countdown timer */
         /* Style for the countdown timer container */
-.timer-container {
+.score {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: orange;
-    color: white;
+    background-color: red;
+    color: black;
     padding: 10px;
     border-radius: 50%;
 }
@@ -160,63 +160,62 @@
 </head>
 <body>
     @include('user.header')
+    <br>
+    <br>
+    <br>
 
-    <form action="{{url('submmit_quiz',['id' => $id])}}" method="POST">
-    @csrf
+    
     <div class="quiz-container">
-    <div class="timer-container">
-        <div class="timer" id="countdown">25:00</div>
+    
+
+    
+    <div>
+    <div class="score">
+            Score    {{$counts}}/25
+    </div>
+    @foreach ($score as $data)
+        <div class="question">
+            <h4>{{ $loop->iteration }}: {{ $data->question }}</h4>
+        </div>
+
+        <p>Your Answer: {{ $data->answer }}</p>
+        <p>Correct Answer: {{ $data->ianswer }}</p>
+        @if ($data->answer == $data->ianswer)
+            <p style="color: green;">Result: Correct</p>
+        @else
+            <p style="color: red;">Result: Wrong</p>
+        @endif
+        <label>
+            <input type="radio" disabled value="a" @if ($data->answer == 'a') checked @endif> a) {{ $data->ans1 }}
+        </label><br>
+        <label>
+            <input type="radio" disabled value="b" @if ($data->answer == 'b') checked @endif> b) {{ $data->ans2 }}
+        </label><br>
+        <label>
+            <input type="radio" disabled value="c" @if ($data->answer == 'c') checked @endif> c) {{ $data->ans3 }}
+        </label><br>
+        <label>
+            <input type="radio" disabled value="d" @if ($data->answer == 'd') checked @endif> d) {{ $data->ans4 }}
+        </label>
+        <br>
+        <br>
+    @endforeach
+    <br>
+    <br>
+    <a href="{{ url('course_meterial', ['id' => $cid]) }}" class="btn btn-warning"> Continue Learning</a>
     </div>
 
-        @foreach($quiz as $key => $data)
-        <div class="question">
-            {{$key + 1}}. {{$data->question}}
-        </div>
-        <div class="options">
-            <label>
-                <input type="radio" name="questions[{{$key}}]" value="a"><span class="checkmark"></span> a) {{$data->ans1}}
-            </label>
-            <label>
-                <input type="radio" name="questions[{{$key}}]" value="b"><span class="checkmark"></span> b) {{$data->ans2}}
-            </label>
-            <label>
-                <input type="radio" name="questions[{{$key}}]" value="c"><span class="checkmark"></span> c) {{$data->ans3}}
-            </label>
-            <label>
-                <input type="radio" name="questions[{{$key}}]" value="d"><span class="checkmark"></span> d) {{$data->ans4}}
-            </label>
-            
-            
 
-        </div>
-        <br><br>
-        @endforeach
 
-        <button type="submit" class="submit-button" id="submitBtn">Submit</button>
+
+
     </div>
 </form>
+<br>
+    <br>
+    <br>
 
     @include('user.footer')
 </body>
-<script>
-    // Set the countdown time to 25 minutes (in seconds)
-    let countdownTime = 1 * 60;
-    // Function to display and update the countdown timer
-    function updateCountdown() {
-        const countdownElement = document.getElementById('countdown');
-        const minutes = Math.floor(countdownTime / 60);
-        const seconds = countdownTime % 60;
-        countdownElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        if (countdownTime <= 0) {
-            // Automatically submit the form when the timer reaches 0
-            document.getElementById('submitBtn').click();
-        } else {
-            countdownTime--;
-            setTimeout(updateCountdown, 1000); // Update every second
-        }
-    }
-    // Start the countdown when the page loads
-    updateCountdown();
-</script>
 
 </html>

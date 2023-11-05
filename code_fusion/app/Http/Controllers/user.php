@@ -50,25 +50,39 @@ class user extends Controller
     }
 
     public function course_meterial($id)
-    {
-        
-        $courses = DB::table('materials')
-        ->where('cid', $id)
-        ->paginate(3);  
+{
+    $lid = Auth::user()->id;
 
-        foreach ($courses as $course) {
-            if (!is_null($course->type)) 
-            { 
-                $quiz = DB::table('quizzes')->
-                join('materials', 'quizzes.cid', '=', 'materials.cid')->
-                where('qid', $course->id)->first();
-               
+    $courses = DB::table('materials')
+        ->where('cid', $id)
+        ->paginate(3);
+
+    $quiz = []; 
+
+    foreach ($courses as $course) {
+        if (!is_null($course->type)) {
+            $quizItem = DB::table('quizzes')
+                ->join('materials', 'quizzes.cid', '=', 'materials.cid')
+                ->where('qid', $course->id)
+                ->first();
+
+            if (!is_null($quizItem)) {
+                $quiz[] = $quizItem; 
             }
         }
-
-            return view('user.course_meterial',compact('courses','quiz'));
-      
     }
+
+    $status = DB::table('enrolments')
+        ->where('cid', $id)
+        ->where('lid', $lid)
+        ->value('status');
+
+
+
+
+    return view('user.course_meterial', compact('courses', 'quiz','status'));
+}
+
 
     
 
@@ -77,7 +91,7 @@ class user extends Controller
         $lid = Auth::user()->id;
         $courses = DB::table('categories')->join('courses', 'categories.category_name', '=', 'courses.category')
        
-        ->paginate(3);  // Paginate with 10 courses per page
+        ->paginate(3);  
 
         $chk=DB::table('enrolments')->where('cid','=',$id)->where('lid','=',$lid)->first();
 
@@ -110,24 +124,68 @@ class user extends Controller
     }
 
     public function submmit_quiz(Request $request, $id)
-{
-    $user_id = Auth::user()->id;
+    {
+        $user_id = Auth::user()->id;
+    
+        foreach ($request->input('questions') as $question_id => $selected_answer) {
+            $quizAnswer = new answer;
+            $quizAnswer->lid = $user_id;
+            $quizAnswer->qid = $id;
+            // Assuming you have a question_id column
+            $quizAnswer->ianswer = $selected_answer;  // Store the selected answer for this question
+            $quizAnswer->save();
+        }
+    
+        return redirect()->route('user.score', ['id' => $id]);
 
-    foreach ($request->input('questions') as $question_id => $selected_answer) {
-        $quizAnswer = new answer;
-        $quizAnswer->lid = $user_id;
-        $quizAnswer->qid = $id;
-       // Assuming you have a question_id column
-        $quizAnswer->answer = $selected_answer;  // Store the selected answer for this question
-        $quizAnswer->save();
+    }
+    
+    public function score($id)
+    {
+        $user_id = Auth::user()->id;
+
+        DB::table('answers')
+        ->join('quizzes', 'answers.qid', '=', 'quizzes.qid')
+        ->where('answers.qid', $id) 
+        ->update([
+            'answers.result' => DB::raw('CASE WHEN quizzes.answer = answers.ianswer THEN 1 ELSE 0 END')
+        ]);
+
+        $score = DB::table('quizzes')
+        ->join('answers', 'quizzes.qid', '=', 'answers.qid')
+        ->where('answers.lid', $user_id)
+        ->where('answers.qid', $id)
+        ->where('answers.result', 1) 
+        ->get();
+        
+    
+
+        $counts = DB::table('answers')
+        ->where('lid', $user_id)
+        ->where('qid', $id)
+        ->where('answers.result', 1)
+        ->count();
+
+        $cid = DB::table('materials')
+        ->where('id', $id)
+        ->value('cid');
+    
+
+        DB::table('enrolments')
+        ->where('lid', $user_id)
+        ->where('cid', $cid)
+        ->update([
+            'level' => DB::raw('level + 1'),
+            'status' => $id,
+        ]);
+
+    
+
+
+
+return view('user.score', compact('score', 'counts','cid'));
     }
 
-    // Optionally, you can calculate the score or perform any other actions
-
-    // Redirect or return a response as needed
-    session()->flash('message', 'Quiz submitted successfully');
-    return redirect()->back();
-}
 
 
 

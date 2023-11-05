@@ -73,4 +73,4 @@ route::get('/quiz/{id}',[user::class,'quiz']);
 
 route::post('/submmit_quiz/{id}',[user::class,'submmit_quiz']);
 
-
+Route::get('/score/{id}', [user::class, 'score'])->name('user.score');

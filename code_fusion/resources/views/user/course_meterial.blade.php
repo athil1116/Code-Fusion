@@ -61,12 +61,17 @@
             @foreach ($courses as $data)
     <div class="col-md-12">
         <div class="course-card">
-            @if (!empty($data->type))
-            <h2>Quiz</h2>
-            <br>
-            <br>
-            <p><a href="{{url('quiz',['id' => $data->id]) }}" class="btn btn-warning">Test Your Knowledge</a></p>
-            @endif
+
+        
+@if (!empty($data->type))
+    <h2>Quiz</h2>
+    <br><br>
+    @if ($status == $data->id)
+        <p><a href="{{ url('quiz', ['id' => $data->id]) }}" class="btn btn-success">Test Completed</a></p>
+    @else
+        <p><a href="{{ url('quiz', ['id' => $data->id]) }}" class="btn btn-warning">Test Your Knowledge</a></p>
+    @endif
+@endif
 
             @if (!empty($data->main_title))
                 <h2>{{ $data->main_title }}</h2>
