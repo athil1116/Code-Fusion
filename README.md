@@ -30,7 +30,7 @@
 <h3>Installation</h3>
 <p>
     1. Clone the repository:
-    <pre><code>git clone https://github.com/yourusername/code-fusion.git</code></pre>
+    <pre><code>git clone https://github.com/Jyothish9988/Code-Fusion.git</code></pre>
 </p>
 
 <p>
@@ -69,3 +69,12 @@
 <p>
     This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.
 </p>
+ # images
+ 
+
+ <h3></h3><br>
+<img src="Images/1.png"><br>
+<img src="Images/2.png"><br>
+<img src="Images/3.png"><br>
+<img src="Images/4.png"><br>
+<img src="Images/5.png"><br>
