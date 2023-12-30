@@ -207,6 +207,8 @@ return view('user.score', compact('score', 'counts','cid','id'));
       
     }
 
+    
+
 
 
 

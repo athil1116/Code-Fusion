@@ -144,7 +144,7 @@ a[href="{{ route('password.request') }}"] {
 				<li class="active"><a href="index.html">Home</a></li>
 				<li class=""><a href="#about">About</a></li>
 				
-				<li class=""><a href="{{ route('register') }}">Signup</a></li>
+				<li class=""><a href="{{ url('register') }}">Signup</a></li>
 				
 	       
 
@@ -191,7 +191,7 @@ a[href="{{ route('password.request') }}"] {
 									<div class="w3ls_banner_txt">
 										<h3 class="b-w3ltxt text-capitalize mt-md-4">Education Courses.</h3>
 										<h4 class="b-w3ltxt text-capitalize mt-md-2">Study For Better Future</h4>
-										<p class="w3ls_pvt-title my-3">The function of education is to teach one to think intensively and to think critically. Intelligence plus character—that is the goal of true education.</p>
+										<p class="w3ls_pvt-title my-3">he function of education is to teach one to think intensively and to think critically. Intelligence plus character—that is the goal of true education.</p>
 										<!-- <a href="#about" class="btn btn-banner my-3">Read More</a> -->
 									</div>
 								</div>
@@ -209,50 +209,64 @@ a[href="{{ route('password.request') }}"] {
         <div class="padding">
             <!-- Slider container -->
             <div class="slider-container">
-                <div class="slider">
-                    <!-- Sign In form -->
-                    <x-validation-errors class="mb-4" />
+            <div class="slider">
+    
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
-      <form method="POST" action="{{ route('login') }}">
-        @csrf
+            <form method="POST" action="{{ route('register') }}">
+                                        @csrf
+                                    
+                                        <div class="form-group">
+                                            <label for="name">{{ __('Name') }}</label>
+                                            <input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name">
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <label for="email">{{ __('Email') }}</label>
+                                            <input id="email" class="form-control" type="email" name="email" :value="old('email')" required>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <label for="phone">{{ __('Phone') }}</label>
+                                            <input id="phone" class="form-control" type="number" name="phone" :value="old('phone')" required>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <label for="password">{{ __('Password') }}</label>
+                                            <input id="password" class="form-control" type="password" name="password" required autocomplete="new-password">
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <label for="password_confirmation">{{ __('Confirm Password') }}</label>
+                                            <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required autocomplete="new-password">
+                                        </div>
+                                    
+                                        @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="terms" name="terms" required>
+                                                    <label class="custom-control-label" for="terms">
+                                                        {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                                            'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Terms of Service').'</a>',
+                                                            'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Privacy Policy').'</a>',
+                                                        ]) !!}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    
+                                        <div class="form-footer">
+                                            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+                                                {{ __('Already registered?') }}
+                                            </a>
+                                    
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>{{ __('Register') }}</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+   
 
-        <div>
-          <x-label for="email" value="{{ __('Email') }}" />
-          <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-        </div>
-
-        <div class="mt-4">
-          <x-label for="password" value="{{ __('Password') }}" />
-          <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-        </div>
-
-        <div class="block mt-4">
-          <label for="remember_me" class="flex items-center">
-            <x-checkbox id="remember_me" name="remember" />
-            <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-          </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-          @if (Route::has('password.request'))
-          <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-            {{ __('Forgot your password?') }}
-          </a>
-          @endif
-
-          <x-button class="btn btn-success">
-            {{ __('Log in') }}
-          </x-button>
-
-        </div>
-      </form>
-      
-    </div>
 
                     
                 </div>

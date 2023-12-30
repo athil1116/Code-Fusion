@@ -50,16 +50,12 @@
             <li class="nav-item">
               <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
+          
             <li class="nav-item active">
               <a class="nav-link" href="services.html">Courses</a>
             </li>
            
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
+           
             <li>
             <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
             <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
