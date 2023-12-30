@@ -65,16 +65,27 @@
     Contributions are welcome! Please fork the repository and submit a pull request.
 </p>
 
+
+#Module
+
+ # Images
+<p>
+1.Admin
+</p>
+<p>
+2.User
+</p>
+ <h3>Main</h3><br>
+<img src="Images/1.png"><br>
+ <h3>Course Page</h3><br>
+<img src="Images/2.png"><br>
+ <h3>Course Outline</h3><br>
+<img src="Images/3.png"><br>
+ <h3>Course Intro</h3><br>
+<img src="Images/4.png"><br>
+ <h3>Quiz</h3><br>
+<img src="Images/5.png"><br>
 <h2>License</h2>
 <p>
     This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.
 </p>
- # images
- 
-
- <h3></h3><br>
-<img src="Images/1.png"><br>
-<img src="Images/2.png"><br>
-<img src="Images/3.png"><br>
-<img src="Images/4.png"><br>
-<img src="Images/5.png"><br>
