@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Fusion - Online Code Teaching Platform</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        p {
-            color: #555;
-        }
-    </style>
-</head>
-<body>
+
 
 <h1>Code Fusion - Online Code Teaching Platform</h1>
 
@@ -90,6 +69,3 @@
 <p>
     This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.
 </p>
-
-</body>
-</html>
