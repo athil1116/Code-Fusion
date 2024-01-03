@@ -11,7 +11,7 @@
 <ul>
     <li>Admin and User Modules</li>
     <li>Code Compiler and Runner</li>
-    <!-- Add more features as needed -->
+  
 </ul>
 
 <h2>Getting Started</h2>
